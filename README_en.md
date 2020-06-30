@@ -18,7 +18,7 @@
 2. Download the script and copy it at the plugins folder;
 3. Refresh the plugin in your status bar and enjoy it.
 
-## 注意事项
+## Notice
 
 1. Need Python3 or above ;
 2. Need `bs4` and `requests` packages, you can install them with `pip3 install bs4 requests` ;
