@@ -5,7 +5,8 @@
 > BitBar 是一个可以定期自动执行脚本并在状态栏显示输出的 macOS 工具，您可以前往 https://getbitbar.com/ 安装 BitBar 并详细了解 BitBar 的工作原理。
 
 ![UJOrfP.png](https://s1.ax1x.com/2020/07/13/UJOrfP.png)
-![UJLbdA.gif](https://s1.ax1x.com/2020/07/13/UJLbdA.gif)
+
+[GIF 演示](https://s1.ax1x.com/2020/07/13/UJLbdA.gif)
 
 ## 特性
 

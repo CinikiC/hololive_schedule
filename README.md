@@ -5,7 +5,8 @@
 > BitBar can run your scripts regularly and put the output on your status bar. You can go to [here](https://getbitbar.com/) to install BitBar and know how it works.
 
 ![UJOrfP.png](https://s1.ax1x.com/2020/07/13/UJOrfP.png)
-![UJLbdA.gif](https://s1.ax1x.com/2020/07/13/UJLbdA.gif)
+
+[GIF demo here](https://s1.ax1x.com/2020/07/13/UJLbdA.gif)
 
 ## Features
 
