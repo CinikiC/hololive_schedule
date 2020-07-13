@@ -4,7 +4,8 @@
 
 > BitBar can run your scripts regularly and put the output on your status bar. You can go to [here](https://getbitbar.com/) to install BitBar and know how it works.
 
-![image.png](https://i.loli.net/2020/06/30/AWCIRSb9cB7F46f.png)
+![UJOrfP.png](https://s1.ax1x.com/2020/07/13/UJOrfP.png)
+![UJLbdA.gif](https://s1.ax1x.com/2020/07/13/UJLbdA.gif)
 
 ## Features
 
@@ -27,3 +28,17 @@
 5. Because there are many URLs to get, the script might need a little long time to run. On my device and network environment (MacBook Air 2018 & **CANNOT** connect to YouTube directly), it will take about 90s to refresh once;
 6. You will need a proxy if you cann't get access to YouTube directly;
 7. Beacuse there are only YouTube liveroom links on the hololive offical schedule website, no BiliBili links are provided.
+
+## Update notes
+
+### 2020-7-13
+
+1. Add emoji marks for every hololive member;
+2. Add a option can lead you to hololive offical schedule website.
+
+## TODO
+
+1. Optimize refreshing speed (for YouTube links);
+2. Support for HoloCN members (There are no info of HoloCN on the offical website);
+3. Get bilibili liveroom links;
+4. Develop a Rainmeter plugin based on this script for Windows users.

@@ -4,7 +4,8 @@
 
 > BitBar 是一个可以定期自动执行脚本并在状态栏显示输出的 macOS 工具，您可以前往 https://getbitbar.com/ 安装 BitBar 并详细了解 BitBar 的工作原理。
 
-![image.png](https://i.loli.net/2020/06/30/AWCIRSb9cB7F46f.png)
+![UJOrfP.png](https://s1.ax1x.com/2020/07/13/UJOrfP.png)
+![UJLbdA.gif](https://s1.ax1x.com/2020/07/13/UJLbdA.gif)
 
 ## 特性
 
@@ -27,3 +28,17 @@
 5. 由于脚本需要爬取多个 URL ，脚本刷新完成的时间需要视网络状况而定，可能需要大约 90 秒的时间（作者测试）；
 6. 由于脚本需要爬取 YouTube 链接，无法访问 YouTube 的地区需要自行准备代理工具；
 7. 由于 hololive 的日程表网站只提供所有直播间的 YouTube 链接，所以暂时无法提供 BiliBili 的转播链接。
+
+## 更新记录
+
+### 2020-7-13
+
+1. 现在可以显示每个 hololive 成员的应援标识了 (emoji)；
+2. 增加了直接前往官方日程表网站的选项。
+
+## TODO
+
+1. 优化爬取和解析 YouTube 链接的速度；
+2. 支持 HoloCN 成员 (官方的站点虽然有 HoloCN 列表但是没有任何信息)；
+3. 可以爬取 bilibili 直播间链接；
+4. 为 Windows 用户提供可用于 Rainmeter 的移植插件。

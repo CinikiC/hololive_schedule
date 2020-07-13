@@ -15,6 +15,53 @@ import time
 import datetime
 
 
+# Emoji of the members
+emoji = {
+    'ときのそら': '',
+    'ロボ子さん': '🤖',
+    'さくらみこ': '💮',
+    '星街すいせい': '☄️',
+    '夜空メル': '🌟',
+    '夏色まつり': '🏮',
+    '赤井はあと': '❤️',
+    'アキロゼ': '🍎',
+    '白上フブキ': '🌽',
+    '湊あくあ': '⚓️',
+    '紫咲シオン': '🌙',
+    '百鬼あやめ': '😈',
+    '癒月ちょこ': '🍫💋',
+    '大空スバル': '🚑',
+    '大神ミオ': '🌲',
+    '猫又おかゆ': '🍙',
+    '戌神ころね': '🥐',
+    '兎田ぺこら': '👯',
+    '潤羽るしあ': '🦋',
+    '不知火フレア': '🔥',
+    '白銀ノエル': '⚔',
+    '宝鐘マリン': '🏴‍☠️',
+    '天音かなた': '💫',
+    '桐生ココ': '🐉',
+    '角巻わため': '🐏',
+    '常闇トワ': '👾',
+    '姫森ルーナ': '🍬',
+    'AZKi': '🎤',
+    'Risu': '🐿',
+    'Moona': '🔮',
+    'Iofi': '🎨',
+    '夕刻ロベル': '🍷',
+    '奏手イヅル': '🎸',
+    '月下カオル': '💅',
+    '花咲みやび': '🌺',
+    '鏡見キラ': '💙',
+    'アルランディス': '🍕',
+    '律可': '⚙',
+    'アステル・レダ': '🎭',
+    '岸堂天真': '🦔💨',
+    '影山シエン': '🟣',
+    '荒咬オウガ': '🐃',
+    'ホロスターズ': '',
+}
+
 # Designed UA header for HTTP-GET request
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36",
@@ -36,15 +83,15 @@ def get_html():
     return resp
 
 
-# Get the nodes contain schedule info 
+# Get the nodes contain schedule info
 # (The real live schedule is a div tag which class is 'tab-content')
 def get_raw_schedule(html):
     soup = BeautifulSoup(html.text, "lxml")
     return soup.find_all(class_="tab-content")
 
 
-# Traverse all tag nodes and classify them as tags contain date, 
-# time, VTuber's name and liveroom link, using class-id 
+# Traverse all tag nodes and classify them as tags contain date,
+# time, VTuber's name and liveroom link, using class-id
 def tag_classify(tag):
     if(tag.has_attr("class")):
         class_list = tag['class']
@@ -67,7 +114,7 @@ def tag_classify(tag):
         return "others"
 
 
-# Confirm if the VTuber is streaming now 
+# Confirm if the VTuber is streaming now
 # (The VTubers who are streaming will have a red border around the liveroom info card on the schedule webpage)
 def is_streaming(tag):
     if(tag.has_attr("style")):
@@ -119,19 +166,19 @@ for tag in raw_schedule[0].find_all():
     # Tags contain date string detected (like '06/30(日)'), update date value
     if(tag_classify(tag) == "date"):
         date = format_string(tag.string)[0:5]       # Drop week info
-    # Tags contain time string detected (like '14:00'), 
+    # Tags contain time string detected (like '14:00'),
     # combine date and time as a key in the dictionary
     elif(tag_classify(tag) == "time"):
         for time_string in tag.strings:
             if(time_string.replace("\n", "").replace("\t", "").replace("\r", "").replace("None", "").replace(" ", "") is not ""):
                 live['time'] = utc_2_localtime(
                     date+" "+format_string(time_string))
-    # Tags contain VTuber's name string detected (like 'Risu'), 
+    # Tags contain VTuber's name string detected (like 'Risu'),
     # insert the name as a key in the dictionary
     elif(tag_classify(tag) == "name"):
         live['host'] = format_string(tag.string)
-    # Tags contain liveroom link detected, 
-    # get the status of the liveroom (Stream over, Streaming now or Stream will start) 
+    # Tags contain liveroom link detected,
+    # get the status of the liveroom (Stream over, Streaming now or Stream will start)
     # and insert different key in the dictionary
     elif(tag_classify(tag) == "link"):
         live['link'] = tag['href']
@@ -150,19 +197,22 @@ for tag in raw_schedule[0].find_all():
 # Print in the BitBar
 print("▶️")
 print("---")
+print("Click to jump to hololive offical schedule website... | href=https://schedule.hololive.tv")
+print("---")
 print("Streaming now (Click to jump to the chatroom in your web browser)")
 for stream_live in schedule:
     if(stream_live['status'] == 'streaming'):
-        print("🔴 " + stream_live['host'] + " | href=" + stream_live['link'])
+        print("🔴 " + stream_live['host'] + emoji.get(str(stream_live['host']), "") + " | href=" + stream_live['link'])
 print("---")
 print("Upcoming (Auto detected timezone is UTC" + timezone + ")")
 for upcoming_live in schedule:
     if(upcoming_live['status'] == 'upcoming'):
-        print(upcoming_live['time']+" "+upcoming_live['host'] +
+        print(upcoming_live['time']+" "+upcoming_live['host'] + emoji.get(str(upcoming_live['host']), "") +
               " | href="+upcoming_live['link'])
 print("---")
 print("Streaming over")
 for over_live in schedule:
     if(over_live['status'] == 'over'):
-        print(over_live['time']+" "+over_live['host'] +
+        print(over_live['time']+" "+over_live['host'] + emoji.get(str(over_live['host']), "") +
               " | href="+over_live['link'])
+
