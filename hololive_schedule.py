@@ -6,6 +6,7 @@
 # 1. bs4 (html analyse)
 # 2. requests (get webpage)
 
+
 from bs4 import BeautifulSoup
 import requests as req
 import re
@@ -13,6 +14,10 @@ from requests.cookies import RequestsCookieJar
 import os
 import time
 import datetime
+import threading
+
+
+start = time.time()
 
 
 # Emoji of the members
@@ -61,6 +66,7 @@ emoji = {
     '荒咬オウガ': '🐃',
     'ホロスターズ': '',
 }
+
 
 # Designed UA header for HTTP-GET request
 headers = {
@@ -135,11 +141,18 @@ def format_string(string):
 # Confirm if a VTuber's live is not started
 # (The liveroom about to start will have strings contains 'scheduledStartTime' in their webpages)
 def is_upcoming(tag):
+    start = time.time()
     resp = req.get(tag['href'])
     upcoming_flag = re.search("scheduledStartTime", resp.text)
     if(upcoming_flag is not None):
+        end = time.time()
+        print("module is_upcoming: ")
+        print(end-start)
         return True
     else:
+        end = time.time()
+        print("module is_upcoming: ")
+        print(end-start)
         return False
 
 
@@ -154,8 +167,17 @@ def utc_2_localtime(utc):
     return (datetime.datetime.strftime(local, "%m/%d %H:%M"))
 
 
-raw_schedule = get_raw_schedule(get_html())         # Get the tag nodes contain schedule info
-date = "date_dummy_string"                          # Date status (changed when analyse new date)
+# Get current time
+def get_current_time():
+    timestamp = time.time()
+    local = datetime.datetime.fromtimestamp(timestamp)
+    return (datetime.datetime.strftime(local, "%m/%d %H:%M"))
+
+
+# Get the tag nodes contain schedule info
+raw_schedule = get_raw_schedule(get_html())
+# Date status (changed when analyse new date)
+date = "date_dummy_string"
 schedule = []                                       # Blank schedule list
 live = {}                                           # Blank liveroom dictionary
 timezone = time.strftime("%z", time.localtime())    # User's timezone
@@ -173,6 +195,10 @@ for tag in raw_schedule[0].find_all():
             if(time_string.replace("\n", "").replace("\t", "").replace("\r", "").replace("None", "").replace(" ", "") is not ""):
                 live['time'] = utc_2_localtime(
                     date+" "+format_string(time_string))
+                # Streaming time is further than current time,
+                # which means the stream is not beginning
+                if(live['time'] > get_current_time()):
+                    live['status'] = 'upcoming'
     # Tags contain VTuber's name string detected (like 'Risu'),
     # insert the name as a key in the dictionary
     elif(tag_classify(tag) == "name"):
@@ -182,10 +208,8 @@ for tag in raw_schedule[0].find_all():
     # and insert different key in the dictionary
     elif(tag_classify(tag) == "link"):
         live['link'] = tag['href']
-        if(is_streaming(tag)):
+        if(is_streaming(tag) is True):
             live['status'] = 'streaming'
-        elif(is_upcoming(tag)):
-            live['status'] = 'upcoming'
         else:
             live['status'] = 'over'
     # If all keys of a dictionary is inserted, append it into the schedule list
@@ -194,15 +218,22 @@ for tag in raw_schedule[0].find_all():
         live = {}   # Clear the dictionary for new info
 
 
+end = time.time()
+time_taken = str(end - start)
+
+
 # Print in the BitBar
 print("▶️")
 print("---")
 print("Click to jump to hololive offical schedule website... | href=https://schedule.hololive.tv")
 print("---")
+print("Updated in " + time_taken + " seconds")
+print("---")
 print("Streaming now (Click to jump to the chatroom in your web browser)")
 for stream_live in schedule:
     if(stream_live['status'] == 'streaming'):
-        print("🔴 " + stream_live['host'] + emoji.get(str(stream_live['host']), "") + " | href=" + stream_live['link'])
+        print("🔴 " + stream_live['host'] + emoji.get(
+            str(stream_live['host']), "") + " | href=" + stream_live['link'])
 print("---")
 print("Upcoming (Auto detected timezone is UTC" + timezone + ")")
 for upcoming_live in schedule:
@@ -215,4 +246,3 @@ for over_live in schedule:
     if(over_live['status'] == 'over'):
         print(over_live['time']+" "+over_live['host'] + emoji.get(str(over_live['host']), "") +
               " | href="+over_live['link'])
-
