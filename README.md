@@ -47,6 +47,10 @@ Because there is not a tool such like BitBar on Windows platform, Windows users 
 1. Now the script can get all information without YouTube webpage. Now it just take serval seconds to refresh once and it can work without proxy (for regions cannot connect directly to YouTube);
 2. Add text tells the time taken of last refreshing.
 
+### 2020-8-23
+
+Add new emojis for hololive 5th generation.
+
 ## TODO
 
 1. ~~Optimize refreshing speed (for YouTube links);~~

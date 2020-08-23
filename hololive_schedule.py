@@ -14,7 +14,6 @@ from requests.cookies import RequestsCookieJar
 import os
 import time
 import datetime
-import threading
 
 
 start = time.time()
@@ -65,6 +64,11 @@ emoji = {
     '影山シエン': '🟣',
     '荒咬オウガ': '🐃',
     'ホロスターズ': '',
+    '雪花ラミィ': '⛄️',
+    '獅白ぼたん': '♌',
+    '尾丸ポルカ': '🎪',
+    '桃鈴ねね': '🥟',
+    '魔乃アロエ': '👅'
 }
 
 
