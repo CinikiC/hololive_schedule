@@ -51,6 +51,10 @@
 
 增加了 hololive 5 期生的 emoji 信息。
 
+### 2020-9-16
+
+增加了 holoEN 的五位 VTuber 的 emoji 信息。
+
 ## TODO
 
 1. ~~优化爬取和解析 YouTube 链接的速度；~~

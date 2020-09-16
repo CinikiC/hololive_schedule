@@ -51,6 +51,10 @@ Because there is not a tool such like BitBar on Windows platform, Windows users 
 
 Add new emojis for hololive 5th generation.
 
+### 2020-9-16
+
+Add new emojis for holoEN.
+
 ## TODO
 
 1. ~~Optimize refreshing speed (for YouTube links);~~
