@@ -1,19 +1,23 @@
-#!/usr/bin/env PYTHONIOENCODING=UTF-8 /usr/local/bin/python3
-# You should change your python3 interpreter location here
-
-
 # Required additional packages:
 # 1. bs4 (html analyse)
 # 2. requests (get webpage)
 
 
-from bs4 import BeautifulSoup
-import requests as req
 import re
-from requests.cookies import RequestsCookieJar
 import os
 import time
 import datetime
+
+
+# Install BeautifulSoup, lxml and requests with pip3 (If they are not installed)
+try:
+    from bs4 import BeautifulSoup
+    import lxml
+    import requests as req
+except:
+    os.system('pip3 install bs4 lxml requests')
+    from bs4 import BeautifulSoup
+    import requests as req
 
 
 start = time.time()

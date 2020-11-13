@@ -55,9 +55,13 @@
 
 增加了 holoEN 的五位 VTuber 的 emoji 信息。
 
+### 2020-11-13
+
+自动检测依赖包并在需要时安装。
+
 ## TODO
 
 1. ~~优化爬取和解析 YouTube 链接的速度；~~
-2. 支持 HoloCN 成员 (官方的站点虽然有 HoloCN 列表但是没有任何信息)；
+2. ~~支持 HoloCN 成员 (官方的站点虽然有 HoloCN 列表但是没有任何信息)；~~
 3. 可以爬取 bilibili 直播间链接；
 4. 为 Windows 用户提供可用于 Rainmeter 的移植插件。

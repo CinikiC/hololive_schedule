@@ -55,10 +55,14 @@ Add new emojis for hololive 5th generation.
 
 Add new emojis for holoEN.
 
+### 2020-11-13
+
+Auto-install packages which are not exist.
+
 ## TODO
 
 1. ~~Optimize refreshing speed (for YouTube links);~~
-2. Support for HoloCN members (There are no info of HoloCN on the offical website);
+2. ~~Support for HoloCN members (There are no info of HoloCN on the offical website);~~
 3. Get bilibili liveroom links;
 4. Develop a Rainmeter plugin based on this script for Windows users.
 
