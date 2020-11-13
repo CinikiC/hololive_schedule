@@ -27,8 +27,8 @@ Because there is not a tool such like BitBar on Windows platform, Windows users 
 ## Notice
 
 1. Need Python3 or above ;
-2. Need `bs4` and `requests` packages, you can install them with `pip3 install bs4 requests` ;
-3. If your `python3` is not at `/usr/local/bin/python3` , you might need to change the python3 interpreter's path at the first line of the script;
+2. ~~Need `bs4` and `requests` packages, you can install them with `pip3 install bs4 requests` ;~~
+3. ~~If your `python3` is not at `/usr/local/bin/python3` , you might need to change the python3 interpreter's path at the first line of the script;~~
 4. You can rename the script as `hololive_schedule.{xxx}.py` to let BitBar run the script with a custom time interval. For example, `hololive_schedule.90s.py` means run the script every 90s;
 5. ~~Because there are many URLs to get, the script might need a little long time to run. On my device and network environment (MacBook Air 2018 & **CANNOT** connect to YouTube directly), it will take about 90s to refresh once;~~
 6. ~~You will need a proxy if you cann't get access to YouTube directly;~~

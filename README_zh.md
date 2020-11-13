@@ -27,8 +27,8 @@
 ## 注意事项
 
 1. 脚本运行需要 Python3 及以上版本；
-2. 需要安装 `bs4` 和 `requests` 两个库，可以使用 `pip3 install bs4 requests` 来安装；
-3. 如果您的 python3 解释器的位置不是 `/usr/local/bin/python3` ，可能需要在脚本第一行更改 python3 解释器的位置才可以正常工作；
+2. ~~需要安装 `bs4` 和 `requests` 两个库，可以使用 `pip3 install bs4 requests` 来安装；~~
+3. ~~如果您的 python3 解释器的位置不是 `/usr/local/bin/python3` ，可能需要在脚本第一行更改 python3 解释器的位置才可以正常工作；~~
 4. 可以更改脚本定时执行的时间间隔，只需要把文件名修改为 `hololive_schedule.{xxx}.py` 即可，其中 `{xxx}` 就是定时执行的时间间隔，建议以秒或分为单位。例如 `90s` 代表 90 秒钟执行一次；
 5. ~~由于脚本需要爬取多个 URL ，脚本刷新完成的时间需要视网络状况而定，可能需要大约 90 秒的时间（作者测试）；~~
 6. ~~由于脚本需要爬取 YouTube 链接，无法访问 YouTube 的地区需要自行准备代理工具；~~
